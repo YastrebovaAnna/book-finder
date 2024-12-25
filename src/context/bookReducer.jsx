@@ -6,6 +6,8 @@ const bookReducer = (state, action) => {
                     ? {...book, read: !book.read}
                     : book
             );
+        case "ADD_BOOK":
+            return [...state, action.payload];
         default:
             throw new Error(`Unknown action type: ${action.type}`);
     }
