@@ -29,7 +29,14 @@ const useBookActions = () => {
         });
     };
 
-    return {addBook, toggleReadStatus, deleteBook};
+    const editBook = (id, title) => {
+        dispatch({
+            type: "EDIT_BOOK",
+            payload: { id, title },
+        });
+    };
+
+    return {addBook, toggleReadStatus, deleteBook, editBook};
 };
 
 export {useBookActions};
