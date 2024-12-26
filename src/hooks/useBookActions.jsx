@@ -32,11 +32,19 @@ const useBookActions = () => {
     const editBook = (id, title) => {
         dispatch({
             type: "EDIT_BOOK",
-            payload: { id, title },
+            payload: {id, title},
         });
     };
 
-    return {addBook, toggleReadStatus, deleteBook, editBook};
+    const clearBooks = () => {
+        dispatch({type: "CLEAR_BOOKS"});
+    };
+
+    const markAllAsRead = () => {
+        dispatch({type: "MARK_ALL_AS_READ"});
+    };
+
+    return {addBook, toggleReadStatus, deleteBook, editBook, clearBooks, markAllAsRead};
 };
 
 export {useBookActions};

@@ -16,6 +16,10 @@ const bookReducer = (state, action) => {
                     ? {...book, title: action.payload.title}
                     : book
             );
+        case "CLEAR_BOOKS":
+            return [];
+        case "MARK_ALL_AS_READ":
+            return state.map((book) => ({ ...book, read: true }));
         default:
             throw new Error(`Unknown action type: ${action.type}`);
     }
