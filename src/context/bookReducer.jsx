@@ -1,25 +1,27 @@
+import {ACTIONS} from "../data/data.js";
+
 const bookReducer = (state, action) => {
     switch (action.type) {
-        case "TOGGLE_READ":
+        case ACTIONS.TOGGLE_READ:
             return state.map((book) =>
                 book.id === action.payload
                     ? {...book, read: !book.read}
                     : book
             );
-        case "ADD_BOOK":
+        case ACTIONS.ADD_BOOK:
             return [...state, action.payload];
-        case "DELETE_BOOK":
+        case ACTIONS.DELETE_BOOK:
             return state.filter((book) => book.id !== action.payload);
-        case "EDIT_BOOK":
+        case ACTIONS.EDIT_BOOK:
             return state.map((book) =>
                 book.id === action.payload.id
                     ? {...book, title: action.payload.title}
                     : book
             );
-        case "CLEAR_BOOKS":
+        case ACTIONS.CLEAR_BOOKS:
             return [];
-        case "MARK_ALL_AS_READ":
-            return state.map((book) => ({ ...book, read: true }));
+        case ACTIONS.MARK_ALL_AS_READ:
+            return state.map((book) => ({...book, read: true}));
         default:
             throw new Error(`Unknown action type: ${action.type}`);
     }

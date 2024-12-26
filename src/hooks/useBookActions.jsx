@@ -1,14 +1,16 @@
 import {useContext} from "react";
 import {BookContext} from "../context/BookContext.jsx";
+import {ACTIONS} from "../data/data.js";
+import {generateId} from "../utils/generateId";
 
 const useBookActions = () => {
     const {dispatch} = useContext(BookContext);
 
     const addBook = (title) => {
         dispatch({
-            type: "ADD_BOOK",
+            type: ACTIONS.ADD_BOOK,
             payload: {
-                id: Date.now(),
+                id: generateId(),
                 title: title.trim(),
                 read: false,
             },
@@ -16,35 +18,33 @@ const useBookActions = () => {
     };
 
     const toggleReadStatus = (id) => {
-        dispatch({
-            type: "TOGGLE_READ",
-            payload: id,
-        });
+        dispatch({type: ACTIONS.TOGGLE_READ, payload: id});
     };
 
     const deleteBook = (id) => {
-        dispatch({
-            type: "DELETE_BOOK",
-            payload: id,
-        });
+        dispatch({type: ACTIONS.DELETE_BOOK, payload: id});
     };
 
     const editBook = (id, title) => {
-        dispatch({
-            type: "EDIT_BOOK",
-            payload: {id, title},
-        });
+        dispatch({type: ACTIONS.EDIT_BOOK, payload: {id, title}});
     };
 
     const clearBooks = () => {
-        dispatch({type: "CLEAR_BOOKS"});
+        dispatch({type: ACTIONS.CLEAR_BOOKS});
     };
 
     const markAllAsRead = () => {
-        dispatch({type: "MARK_ALL_AS_READ"});
+        dispatch({type: ACTIONS.MARK_ALL_AS_READ});
     };
 
-    return {addBook, toggleReadStatus, deleteBook, editBook, clearBooks, markAllAsRead};
+    return {
+        addBook,
+        toggleReadStatus,
+        deleteBook,
+        editBook,
+        clearBooks,
+        markAllAsRead
+    };
 };
 
 export {useBookActions};

@@ -1,7 +1,7 @@
 import {BookProvider} from "./context/BookContext.jsx";
 import {BookList} from "./components/BookList.jsx";
-import {AddBook} from "./context/AddBook.jsx";
-import {BulkActions} from "./context/BulkActions.jsx";
+import {AddBook} from "./components/AddBook.jsx";
+import {BulkActions} from "./components/BulkActions.jsx";
 
 const App = () => {
     return (

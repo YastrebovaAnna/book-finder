@@ -1,6 +1,6 @@
 import {useState} from "react";
-import {useBookActions} from "../hooks/useBookActions";
-import {BookForm} from "../components/BookForm.jsx";
+import {useBookActions} from "../hooks/useBookActions.jsx";
+import {BookForm} from "./BookForm.jsx";
 
 const AddBook = () => {
     const {addBook} = useBookActions();

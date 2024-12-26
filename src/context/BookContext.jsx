@@ -4,7 +4,7 @@ import {bookReducer} from "./bookReducer";
 
 const BookContext = createContext();
 
-export const BookProvider = ({children}) => {
+const BookProvider = ({children}) => {
     const [state, dispatch] = useReducer(bookReducer, []);
 
     return (
@@ -18,4 +18,4 @@ BookProvider.propTypes = {
     children: PropTypes.node.isRequired,
 };
 
-export {BookContext};
+export {BookContext, BookProvider};
