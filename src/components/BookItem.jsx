@@ -1,16 +1,18 @@
-import {useContext} from "react";
-import {BookContext} from "../context/BookContext";
+import {useBookActions} from "../hooks/useBookActions";
 import PropTypes from "prop-types";
 
 const BookItem = ({book}) => {
-    const {dispatch} = useContext(BookContext);
+    const {toggleReadStatus, deleteBook} = useBookActions();
 
     return (
         <div className={`book-item ${book.read ? "read" : "unread"}`}>
             <span className="book-title">{book.title}</span>
             <div className="book-actions">
-                <button onClick={() => dispatch({type: "TOGGLE_READ", payload: book.id})}>
+                <button onClick={() => toggleReadStatus(book.id)}>
                     {book.read ? "Mark as Unread" : "Mark as Read"}
+                </button>
+                <button onClick={() => deleteBook(book.id)} className="delete-button">
+                    Delete
                 </button>
             </div>
         </div>

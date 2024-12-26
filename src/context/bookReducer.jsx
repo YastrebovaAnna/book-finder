@@ -8,6 +8,8 @@ const bookReducer = (state, action) => {
             );
         case "ADD_BOOK":
             return [...state, action.payload];
+        case "DELETE_BOOK":
+            return state.filter((book) => book.id !== action.payload);
         default:
             throw new Error(`Unknown action type: ${action.type}`);
     }

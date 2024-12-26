@@ -22,7 +22,14 @@ const useBookActions = () => {
         });
     };
 
-    return {addBook, toggleReadStatus};
+    const deleteBook = (id) => {
+        dispatch({
+            type: "DELETE_BOOK",
+            payload: id,
+        });
+    };
+
+    return {addBook, toggleReadStatus, deleteBook};
 };
 
 export {useBookActions};

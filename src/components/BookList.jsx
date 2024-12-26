@@ -8,10 +8,11 @@ const BookList = () => {
 
     return (
         <div className="book-list">
-            {books.length ?
-                (books.map((book) => <BookItem key={book.id} book={book}/>))
-                :
-                (<p className="no-books">No books to display.</p>)}
+            {books.length ? (
+                books.map((book) => <BookItem key={book.id} book={book}/>)
+            ) : (
+                <p className="no-books">No books to display.</p>
+            )}
         </div>
     );
 };
